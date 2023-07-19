@@ -1,0 +1,46 @@
+*{
+   font-family: 'poppins', sans-serif;
+   padding: 38px;
+   margin: 15px;
+   font-size: 25;
+   color: #333;
+}
+
+h1{
+   text-align: center;
+   font-size: 50px;
+
+}
+.container{
+   min-height: 15vh;
+   display: flex;
+   text-align: justify;
+   column-gap: 10px;
+   background-color: deepskyblue;
+}
+
+.container img{
+   width: 60%;
+   height: 40%;
+   border: 20px;
+   border-color: black;
+
+}
+
+.Admin{
+      background: #eee;
+      float: left;
+      text-align: center;
+      font-family:sans-serif;
+      text-transform: capitalize;
+}
+
+
+.User{
+      background: #eee;
+      float: right;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      text-transform: capitalize;
+
+   } 

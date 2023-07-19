@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+    background: rgb(200, 220, 224);
+}
+        .form {
+  font-family: Helvetica, sans-serif;
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+  padding: 16px;
+  background: #ffffff;
+}
+.form h1 {
+  background: #03773f;
+  padding: 20px 0;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+  margin: -16px -16px 16px -16px;
+  font-size:  25px;
+}
+.form input[type="text"],
+.form input[type="date"] {
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 4%;
+  font-size: 17px;
+  color: rgb(9, 61, 125);
+}
+.form input[type="text"]:focus,
+.form input[type="date"]:focus {
+  box-shadow: 0 0 5px #5868bf;
+  padding: 4%;
+  border: 1px solid #5868bf;
+}
+
+.form button {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 180px;
+  margin: 0 auto;
+  padding: 3%;
+  background: #0853b6;
+  border: none;  
+  border-radius: 3px;
+  font-size: 17px;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  color: #fff;
+  cursor: pointer;
+}
+.form button:hover {
+  background: rgba(88,104,191, 0.5);
+}
+#qrcode-container{
+    display:none;
+}
+
+.qrcode{
+  padding: 16px;
+  margin-bottom: 30px;
+}
+.qrcode img{
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(67, 67, 68, 0.25);
+  padding: 4px;
+}
+
+</style>
+</head>
+<body>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<div class="form">
+  <h1>VISITOR FORM</h1>
+  <form>
+    <br>
+    <input type="text" name="name" required placeholder="Enter Visitor name" id="name">
+         <input type="text" name="email" required placeholder="Enter Visitor email" id="email">
+         <input type="text" name="carnumber" required placeholder=" Enter visitor car number" id="carnumber">
+         <input type="text" name="phonenumber" required placeholder="Enter Visitor phonenumber" id="phonenumber">
+         <input type="text" name="address" required placeholder="Enter owner house address" id="address">
+         <input type="date" name="datein" id="date">
+
+    <div id="qrcode-container">
+        <div id="qrcode" class="qrcode"></div>
+    </div>
+
+    <button type="button" name="submit" onclick="generateQRCode()">SUBMIT</button>
+    <p> <a href="use.php">DONE</a>
+
+
+    
+</form>
+
+
+
+  <script type="text/javascript">
+    function generateQRCode() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let carnumber = document.getElementById("carnumber").value;
+  let phonenumber = document.getElementById("phonenumber").value;
+  let address = document.getElementById("address").value;
+  
+
+
+
+  if (name && email && carnumber && phonenumber) {
+    let qrcodeContainer = document.getElementById("qrcode");
+    qrcodeContainer.innerHTML = "";
+    let qrText = `
+    Visitor Name: ${name}
+    Visitor Email: ${email}
+    Visitor Car Number: ${carnumber}
+    Visitor Phone Number: ${phonenumber}
+    House Owner Address: ${address}`
+    ;
+    new QRCode(qrcodeContainer, qrText);
+
+    document.getElementById("qrcode-container").style.display = "block";
+  } else {
+    alert("Please fill in all the required fields");
+  }
+}
+
+</script>
+</div>
+</body>
+</html>
+
+
+
